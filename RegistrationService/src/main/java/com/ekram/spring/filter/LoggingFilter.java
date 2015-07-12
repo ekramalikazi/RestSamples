@@ -24,6 +24,13 @@ import javax.servlet.http.HttpServletResponseWrapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Logging filter to capture request and repsonse.
+ * such filters can play vital role in metrics, etc.
+ * 
+ * @author kazi_e
+ *
+ */
 public class LoggingFilter implements Filter {
 
 	private static final Logger LOG = LogManager.getLogger();

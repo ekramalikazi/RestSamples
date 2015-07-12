@@ -14,6 +14,12 @@ import com.ekram.spring.controller.exception.DuplicateUserException;
 import com.ekram.spring.controller.exception.UserNotFoundException;
 import com.ekram.spring.model.User;
 
+/**
+ * InMemory DAO to encapsulate user storage.
+ * 
+ * @author kazi_e
+ *
+ */
 @Component("inMemoryUserDao")
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class InMemoryUserDao {

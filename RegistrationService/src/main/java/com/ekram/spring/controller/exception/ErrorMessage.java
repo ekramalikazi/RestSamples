@@ -8,6 +8,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * In case of Exception, response object.
+ * 
+ * @author kazi_e
+ *
+ */
 @XmlRootElement
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ErrorMessage {

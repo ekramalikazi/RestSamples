@@ -15,6 +15,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 
+/**
+ * User entity.
+ * 
+ * @author kazi_e
+ *
+ */
 @XmlRootElement
 public class User implements Serializable{
 

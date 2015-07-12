@@ -23,6 +23,12 @@ import com.ekram.spring.constants.UserRestURIConstants;
 import com.ekram.spring.model.User;
 import com.ekram.spring.service.UserService;
 
+/**
+ * Rest Controller to perform CRUD operations.
+ * 
+ * @author kazi_e
+ *
+ */
 @RestController
 public class UserRegistrationController {
 
@@ -30,6 +36,12 @@ public class UserRegistrationController {
 
 	@Autowired UserService userService;
 	
+	/**
+	 * Get a user by username.
+	 * 
+	 * @param username
+	 * @return user
+	 */
 	@RequestMapping(value = UserRestURIConstants.GET_USER, 
 			produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
 			method = RequestMethod.GET)
@@ -40,6 +52,11 @@ public class UserRegistrationController {
 		return new ResponseEntity<User>(user, HttpStatus.FOUND);
 	}
 
+	/**
+	 * Get All users.
+	 * 
+	 * @return list of users.
+	 */
 	@RequestMapping(value = UserRestURIConstants.GET_USERS, 
 			produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
 			method = RequestMethod.GET)
@@ -52,7 +69,13 @@ public class UserRegistrationController {
 		responseHeaders.set("HeaderKey", "HeaderData");
 		return new ResponseEntity<List<User>>(users, responseHeaders, HttpStatus.FOUND);
 	}
-
+	
+	/**
+	 * Create a user
+	 * 
+	 * @param user
+	 * @return created user along with URI to access created user.
+	 */
 	@RequestMapping(value = UserRestURIConstants.CREATE_USER,
 			produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
 			method = RequestMethod.POST)
@@ -70,6 +93,12 @@ public class UserRegistrationController {
 		return new ResponseEntity<User>(userCreated, responseHeaders, HttpStatus.CREATED);
 	}
 
+	/**
+	 * Delete a user based on username
+	 * 
+	 * @param username
+	 * @return void
+	 */
 	@RequestMapping(value = UserRestURIConstants.DELETE_USER, 
 			produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
 			method = RequestMethod.PUT)
