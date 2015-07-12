@@ -42,7 +42,7 @@ public class InMemoryUserDaoTest {
 		user.setUsername(NEW_USERNAME);
 		user.setEmail(NEW_EMAIL);
 		inMemoryUserDao.createUser(user);
-		assertEquals(inMemoryUserDao.findAccount(NEW_USERNAME).getEmail(), NEW_EMAIL);
+		assertEquals(inMemoryUserDao.findUser(NEW_USERNAME).getEmail(), NEW_EMAIL);
 	}
 
 	@Test(expected = DuplicateUserException.class)

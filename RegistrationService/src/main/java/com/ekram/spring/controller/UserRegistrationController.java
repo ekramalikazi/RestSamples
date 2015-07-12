@@ -29,6 +29,16 @@ public class UserRegistrationController {
 	private static final Logger LOG = LogManager.getLogger();
 
 	@Autowired UserService userService;
+	
+	@RequestMapping(value = UserRestURIConstants.GET_USER, 
+			produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+			method = RequestMethod.GET)
+	public ResponseEntity<User> getUser(@PathVariable("username") String username) {
+		LOG.info("Start getUser. username = "+username);
+		User user = userService.getUser(username);
+
+		return new ResponseEntity<User>(user, HttpStatus.FOUND);
+	}
 
 	@RequestMapping(value = UserRestURIConstants.GET_USERS, 
 			produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},

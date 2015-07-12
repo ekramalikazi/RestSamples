@@ -43,14 +43,14 @@ public class InMemoryUserDao {
 		users.put(user.getUsername(), user);
 	}
 	
-	public void removeAccount(User user) {
+	public void removeUser(User user) {
 		if (!userExists(user.getUsername())) {
 			throw new UserNotFoundException();
 		}
 		users.remove(user.getUsername());
 	}
 	
-	public User findAccount(String username) {
+	public User findUser(String username) {
 		User user = users.get(username);
 		if (user == null) {
 			throw new UserNotFoundException();

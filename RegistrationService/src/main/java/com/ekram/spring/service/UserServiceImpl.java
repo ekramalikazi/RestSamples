@@ -16,6 +16,11 @@ import com.ekram.spring.model.User;
 public class UserServiceImpl implements UserService {
 
 	@Autowired InMemoryUserDao inMemoryUserDao;
+	
+	@Override
+	public User getUser(String username) {
+		return inMemoryUserDao.findUser(username);
+	}
 
 	@Override
 	public List<User> getUsers() {
@@ -37,7 +42,9 @@ public class UserServiceImpl implements UserService {
 		if ("".equals(username)){
 			throw new RuntimeException("username is empty");
 		}
-		User user = inMemoryUserDao.findAccount(username);
-		inMemoryUserDao.removeAccount(user);
+		User user = inMemoryUserDao.findUser(username);
+		inMemoryUserDao.removeUser(user);
 	}
+
+	
 }
