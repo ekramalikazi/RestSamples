@@ -19,6 +19,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User getUser(String username) {
+		if ("".equals(username)){
+			throw new RuntimeException("username is empty");
+		}
 		return inMemoryUserDao.findUser(username);
 	}
 
