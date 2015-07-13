@@ -10,7 +10,8 @@ JSR 303 Validator,
 log4j2  logging,
 logging filter,
 separate service & in memory dao layer,
-unit and integration tests
+unit and integration tests,
+InMemory data is persisted to file system and relies on FILE_PERSISTENCE_PATH constant (using Pre and Post constructs)
 
 TODO (Technical Debt): 
 -----
