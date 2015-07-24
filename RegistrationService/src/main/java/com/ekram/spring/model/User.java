@@ -12,8 +12,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.DateSerializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * User entity.
@@ -34,7 +33,7 @@ public class User implements Serializable{
 	//Pattern is required, because original @Email validation doesn't work as expected
 	@NotEmpty(message = "Please enter email")
 	@Pattern(regexp="^([\\w-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([\\w-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$",message="Invalid Email format")
-	@Size(min = 6, max = 15, message = "email must between 6 and 30 characters")
+	@Size(min = 6, max = 30, message = "email must between 6 and 30 characters")
 	private String email;
 
 	private Date createdDate;
@@ -57,7 +56,8 @@ public class User implements Serializable{
 		this.email = email;
 	}
 
-	@JsonSerialize(using=DateSerializer.class)
+	//@JsonSerialize(using=DateSerializer.class)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	public Date getCreatedDate() {
 		return createdDate;
 	}

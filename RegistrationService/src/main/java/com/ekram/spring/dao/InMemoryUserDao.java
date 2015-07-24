@@ -6,12 +6,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.ekram.spring.controller.exception.DuplicateUserException;
 import com.ekram.spring.controller.exception.UserNotFoundException;
+import com.ekram.spring.helper.FileHelper;
 import com.ekram.spring.model.User;
 
 /**
@@ -66,5 +70,20 @@ public class InMemoryUserDao {
 	
 	public List<User> findAll(){
 		return new ArrayList<User>(users.values());
+	}
+	
+	@PreDestroy
+	public void doCleanUp(){
+		FileHelper.writeToJson(users);
+	}
+	
+	@PostConstruct
+	public void doPost(){
+		Map<String, User> users = FileHelper.readFromJson();
+		
+		if(users != null && users.size() > 0){
+			this.users.putAll(users);
+		}
+		
 	}
 }
